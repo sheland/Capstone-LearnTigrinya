@@ -4,19 +4,21 @@ import {
   StyleSheet,
   Text,
   ScrollView,
-  View
+  View,
+  Button
 } from 'react-native';
 import Letters from '../data/letters.json';
-import { SketchCanvas } from '@terrylinla/react-native-sketch-canvas';
-import Canvas from 'react-native-canvas';
+import { RNSketchCanvas } from '@terrylinla/react-native-sketch-canvas';
+
+import Canvas from './Canvas';
 
 export default class Details extends React.Component {
 
-  handleCanvas = async (canvas) => {
-    const ctx = await canvas.getContext('2d');
-    ctx.fillStyle = 'red';
-    ctx.fillRect(0, 0, 100, 100);
-  }
+  // handleCanvas = async (canvas) => {
+  //   const ctx = await canvas.getContext('2d');
+  //   ctx.fillStyle = 'red';
+  //   ctx.fillRect(0, 0, 100, 100);
+  // }
 
   render(){
 
@@ -25,18 +27,23 @@ export default class Details extends React.Component {
     console.log(letter);
 
     return (
-      <ScrollView style={styles.container}>
-        <Text>Letter: {letter.letter}</Text>
-        <Text>IPA: {letter.ipa}</Text>
-        <Text>Vowel: {letter.vowel}</Text>
-        <Text>Pronounce: {letter.pronouce}</Text>
+      <View style={styles.container}>
+        <Text style={styles.mainLetter}>{letter.letter}</Text>
+        <Text style={styles.main}>Pronunciation: {letter.pronouce}</Text>
+        <Button
+          title="Audio"
+          buttonStyle={{
+            color: "aliceblue"
+          }}
+        />
+        <Text style={styles.title}>Draw {letter.letter} below!</Text>
 
-
-        <Canvas ref={this.handleCanvas}/>
-      </ScrollView>
+        <Canvas />
+      </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -53,4 +60,18 @@ const styles = StyleSheet.create({
     width: 730,
     height: 410,
   },
+  mainLetter: {
+    fontSize: 70,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  main: {
+    textAlign: 'center',
+  },
+  title: {
+    textAlign: 'center',
+    marginTop: 20,
+
+  }
+
 });
