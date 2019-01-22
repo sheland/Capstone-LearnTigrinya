@@ -53,6 +53,7 @@ export default class Login extends React.Component {
       }
 
       firebase.auth().createUserWithEmailAndPassword(email, password)
+      this.props.navigation.navigate("Home")
 
     }
     catch (error) {
@@ -93,47 +94,48 @@ export default class Login extends React.Component {
     return (
       <View style={styles.container}>
       <ImageBackground
-        source={require('../img/ag.jpg')}
+        source={require('../img/man.jpg')}
         style={styles.pic}>
       </ImageBackground>
         <Text style={styles.title}>Learn Tigrinya    ትግርኛ</Text>
         <View>
 
-            <Text>Email</Text>
+
             <TextInput
+              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
               autoCorrect={false}
+              placeholder = "Email"
               autoCapitalize="none"
               onChangeText={(email) => this.setState({ email })}
             />
 
 
-            <Text>Password</Text>
+
             <TextInput
+              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              placeholder = "Password"
               secureTextEntry={true}
               autoCorrect={false}
               autoCapitalize="none"
               onChangeText={(password) => this.setState({ password })}
             />
 
-          <Button style={{ marginTop: 10 }}
+          <Button style={{ marginTop: 0 }}
             title="Login"
             onPress={() => this.loginUser(this.state.email, this.state.password)}
           >
-            <Text style={{ color: 'white' }}> Login</Text>
           </Button>
 
-          <Button style={{ marginTop: 10 }}
+          <Button style={{ marginTop: 0 }}
             title="Sign Up"
             onPress={() => this.signUpUser(this.state.email, this.state.password)}
           >
-            <Text style={{ color: 'white' }}> Sign Up</Text>
           </Button>
-
-          <Button style={{ marginTop: 10 }}
-            title="Facebook"
+          <Button style={{ marginTop: 0 }}
+            title="Login With Facebook"
             onPress={() => this.loginWithFacebook()}
           >
-            <Text style={{ color: 'white' }}> Login With Facebook</Text>
+
           </Button>
         </View>
       </View>
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 50,
+    fontSize: 60,
     fontFamily: 'AmericanTypewriter-CondensedBold',
     textAlign: 'center',
     position:'absolute',
@@ -160,6 +162,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    height: '50%',
+    marginTop: 160
 
   },
   pic: {
@@ -170,6 +174,9 @@ const styles = StyleSheet.create({
   },
   label: {
     height: "20%"
+  },
+  input: {
+    textAlign: 'center',
   }
 
 });

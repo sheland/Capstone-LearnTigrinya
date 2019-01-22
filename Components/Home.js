@@ -21,25 +21,20 @@ export default class Home extends React.Component {
           onPress={() => this.props.navigation.navigate('Chart')}
           buttonStyle={{
             backgroundColor: "rgba(92, 99,216, 1)",
-
           }}
-
         />
         <Button
           title="Quiz me!"
           onPress={() => this.props.navigation.navigate('Quiz')}
           buttonStyle={{
             backgroundColor: "rgba(92, 99,216, 1)",
-
           }}
-
         />
         <Button
-          title="About Tigrinya"
+          title="About Learn Tigrinya"
           onPress={() => this.props.navigation.navigate('About')}
             buttonStyle={{
               backgroundColor: "rgba(92, 99,216, 1)",
-
             }}
 
         />
@@ -55,7 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 100
+    marginBottom: 160
 
   },
   title: {

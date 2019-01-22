@@ -40,6 +40,7 @@ export default class ExampleFive extends Component {
     const state = this.state;
     return (
       <ScrollView style={styles.container}>
+      <Text style={styles.titleMain}>Alphabet Charts</Text>
         <Table style={{flexDirection: 'row'}}>
           {/* Left Wrapper (column) */}
           <TableWrapper style={{width: 80}}>
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
   title: { flex: 2, backgroundColor: '#f6f8fa' },
   titleText: { marginRight: 6, textAlign:'right' },
   text: { textAlign: 'center' },
+  titleMain: { textAlign: 'center', fontFamily: 'AmericanTypewriter-CondensedBold', fontWeight: 'bold', fontSize: 30, },
 
 
 });

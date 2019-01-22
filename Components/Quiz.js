@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Button
 } from 'react-native';
 
 export default class Quiz extends React.Component {
@@ -10,7 +11,19 @@ export default class Quiz extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Test your knowledge here!</Text>
-
+        <Text style={styles.mainText}>Press the audio button and then choose from the two rendered letters. Match the sound with the letter!</Text>
+        <Button
+          title="Audio"
+          buttonStyle={{
+            color: "aliceblue"
+          }}
+        />
+        <Button
+          title="Show letters"
+          buttonStyle={{
+            color: "aliceblue"
+          }}
+        />
       </View>
     );
   }
@@ -20,23 +33,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
   },
   title: {
-    color: 'black',
+    color: 'steelblue',
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 35,
     fontFamily: 'AmericanTypewriter-CondensedBold',
     textAlign: 'center',
-    height: "90%"
+    marginBottom: 10
+
 
   },
-  text: {
-    color: 'black',
-    fontSize: 15,
-    fontFamily: 'AmericanTypewriter-CondensedBold',
-    height: "70%"
 
+  mainText: {
+    color: 'steelblue',
+    fontSize: 20,
+    fontFamily: 'AmericanTypewriter-CondensedBold',
+    textAlign: 'center',
   }
 });
