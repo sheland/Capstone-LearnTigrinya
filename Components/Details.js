@@ -36,7 +36,8 @@ export default class Details extends React.Component {
             color: "aliceblue"
           }}
         />
-        
+        <Text style={styles.main}>Write {letter.letter} below!</Text>
+
 
         <Canvas />
       </View>

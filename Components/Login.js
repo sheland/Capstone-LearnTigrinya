@@ -82,10 +82,10 @@ export default class Login extends React.Component {
 
 
       firebase.auth().signInWithCredential(credential).then((response) => {
-        this.navigateHome()
-        console.log(response)
-      }).catch(error => {
-        console.log(error)
+          this.navigateHome()
+          console.log(response)
+          }).catch(error => {
+            console.log(error)
       })
     }
   }
