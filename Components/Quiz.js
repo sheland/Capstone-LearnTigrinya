@@ -44,9 +44,6 @@ export default class Quiz extends React.Component {
     this.setState({falseletter:!this.state.falseletter})
       return this.state.showletter, this.state.falseletter
 
-    // const matchedLetter = allLetters[0].letter
-    //   console.log(matchedLetter)
-    // const wrongLetter = allLetters[2].letter
   }
 
   render() {
@@ -62,24 +59,22 @@ export default class Quiz extends React.Component {
           title="Audio"
           underlayColor='red'
           onPress={() => Audio(this)}
-          buttonStyle={{
-            color: "aliceblue"
-          }}
         />
         <Button
           title="Show letters"
           onPress={this.handleShowLetters}
-          buttonStyle={{
-            color: "aliceblue",
-
-          }}
         />
-        <View style={{flexDirection:"row", marginTop: 80, marginLeft: 30,  }}>
-          <TouchableOpacity onPress={()=>{alert('Correct')}}>
-            <Text style={styles.trueValue}>{textValue}</Text>
-          </TouchableOpacity>
-        </View>
-      </View>  
+        <TouchableOpacity onPress={() => Alert.alert('Correct')}>
+          <View style={styles.valueContainer}>
+              <Text style={styles.trueValue}>{textValue}</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Alert.alert('Incorrect')}>
+          <View style={styles.valueContainer}>
+              <Text style={styles.falseValue}>{falseValue}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -92,6 +87,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
 
   },
+
+  valueContainer: {
+    flexDirection: 'row',
+    marginTop: 10,
+    justifyContent: 'center'
+  },
+
   title: {
     color: 'steelblue',
     fontWeight: 'bold',
@@ -111,14 +113,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1
   },
+
   trueValue: {
-    flex: 1,
-    fontSize: 170,
-    justifyContent: 'flex-start',
+    fontSize: 100,
   },
+
   falseValue: {
-    flex: 1,
-    fontSize: 170,
-    justifyContent: 'flex-end',
-  }
+    fontSize: 100,
+  },
+
+
 });
