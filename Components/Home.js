@@ -16,6 +16,7 @@ export default class Home extends React.Component {
         style={styles.pic}>
       </ImageBackground>
       <Text style={styles.title}>Learn ትግርኛ!</Text>
+      <View style={styles.top}>
         <Button
           title="Alphabet Chart"
           onPress={() => this.props.navigation.navigate('Chart')}
@@ -38,7 +39,7 @@ export default class Home extends React.Component {
             }}
 
         />
-
+      </View>
       </View>
     );
   }
@@ -50,7 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 160
+    marginBottom: 160,
+
 
   },
   title: {
@@ -59,12 +61,19 @@ const styles = StyleSheet.create({
     fontSize: 60,
     fontFamily: 'AmericanTypewriter-CondensedBold',
     textAlign: 'center',
-    height: '40%',
+    height: '25%',
   },
   pic: {
     flex: 1,
     width: '100%',
     height: '100%',
+  },
+  top: {
+    borderWidth: 2,
+    borderColor: 'steelblue',
+    paddingLeft: 70,
+    paddingRight: 70,
+
 
   }
 });

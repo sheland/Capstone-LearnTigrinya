@@ -102,40 +102,39 @@ export default class Login extends React.Component {
 
 
             <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              style={{height: 40, borderColor: 'gray', borderWidth: 1, margin: 5, padding: 5}}
               autoCorrect={false}
               placeholder = "Email"
               autoCapitalize="none"
               onChangeText={(email) => this.setState({ email })}
+              backgroundColor='#eee'
+
             />
 
-
-
             <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              style={{height: 40, borderColor: 'gray', borderWidth: 1, margin: 5, padding: 5}}
               placeholder = "Password"
               secureTextEntry={true}
               autoCorrect={false}
               autoCapitalize="none"
               onChangeText={(password) => this.setState({ password })}
+              backgroundColor='#eee'
             />
 
-          <Button style={{ marginTop: 0 }}
+          <Button style={{ marginTop: 0, position: 'absolute', bottom: 0 }}
             title="Login"
             onPress={() => this.loginUser(this.state.email, this.state.password)}
           >
           </Button>
-
-          <Button style={{ marginTop: 0 }}
+          <Button style={{ marginTop: 0, position: 'absolute', bottom: 0 }}
             title="Sign Up"
             onPress={() => this.signUpUser(this.state.email, this.state.password)}
           >
           </Button>
-          <Button style={{ marginTop: 0 }}
+          <Button style={{ marginBottom: 0, position: 'absolute', bottom: 10 }}
             title="Login With Facebook"
             onPress={() => this.loginWithFacebook()}
           >
-
           </Button>
         </View>
       </View>
@@ -177,6 +176,7 @@ const styles = StyleSheet.create({
   },
   input: {
     textAlign: 'center',
+
   }
 
 });

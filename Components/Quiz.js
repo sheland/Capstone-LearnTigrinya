@@ -3,11 +3,14 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  Alert,
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 import allLetters from '../data/allletters.json';
-import Sound from 'react-native-sound'
-import Audio from './sub_component/audio'
+import Sound from 'react-native-sound';
+import Audio from './sub_component/audio';
 
 // Enable playback in silence mode
 Sound.setCategory('Playback');
@@ -27,20 +30,37 @@ export default class Quiz extends React.Component {
         }
         // download complete
     });
+
+    this.state={
+      showletter:false,
+      falseletter:false
+    }
   }
 
-  handleShowLetters() {
-    const matchedLetter = allLetters[0].letter
-    const wrongLetter = allLetters[2].letter
-    console.log(matchedLetter);
-  };
+
+
+  handleShowLetters = () => {
+    this.setState({showletter:!this.state.showletter})
+    this.setState({falseletter:!this.state.falseletter})
+      return this.state.showletter, this.state.falseletter
+
+    // const matchedLetter = allLetters[0].letter
+    //   console.log(matchedLetter)
+    // const wrongLetter = allLetters[2].letter
+  }
+
   render() {
+    const {showletter} = this.state;
+    const {falseletter} = this.state;
+    const textValue = showletter?"በ":"";
+    const falseValue = falseletter?"ቀ":"";
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Test your knowledge here!</Text>
-        <Text style={styles.mainText}>Press the audio button and then choose from the two rendered letters. Match the sound with the letter!</Text>
+        <Text style={styles.mainText}>Press the audio button and choose from the two rendered letters. Match the sound with the letter!</Text>
         <Button
           title="Audio"
+          underlayColor='red'
           onPress={() => Audio(this)}
           buttonStyle={{
             color: "aliceblue"
@@ -48,12 +68,18 @@ export default class Quiz extends React.Component {
         />
         <Button
           title="Show letters"
+          onPress={this.handleShowLetters}
           buttonStyle={{
             color: "aliceblue",
 
           }}
         />
-      </View>
+        <View style={{flexDirection:"row", marginTop: 80, marginLeft: 30,  }}>
+          <TouchableOpacity onPress={()=>{alert('Correct')}}>
+            <Text style={styles.trueValue}>{textValue}</Text>
+          </TouchableOpacity>
+        </View>
+      </View>  
     );
   }
 }
@@ -72,7 +98,8 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontFamily: 'AmericanTypewriter-CondensedBold',
     textAlign: 'center',
-    marginBottom: 10
+    marginBottom: 30,
+    marginTop: 20
 
 
   },
@@ -82,5 +109,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'AmericanTypewriter-CondensedBold',
     textAlign: 'center',
+    borderWidth: 1
+  },
+  trueValue: {
+    flex: 1,
+    fontSize: 170,
+    justifyContent: 'flex-start',
+  },
+  falseValue: {
+    flex: 1,
+    fontSize: 170,
+    justifyContent: 'flex-end',
   }
 });

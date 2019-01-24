@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   title: { flex: 2, backgroundColor: '#f6f8fa',  },
   titleText: { marginRight: 6, textAlign:'right' },
   text: { textAlign: 'center' },
-  titleMain: { textAlign: 'center', fontFamily: 'AmericanTypewriter-CondensedBold', fontWeight: 'bold', fontSize: 30, },
+  titleMain: { textAlign: 'center', fontFamily: 'AmericanTypewriter-CondensedBold', fontWeight: 'bold', fontSize: 30, color: 'steelblue', },
 
 
 });
