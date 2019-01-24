@@ -9,16 +9,29 @@ import {
 } from 'react-native';
 import Letters from '../data/letters.json';
 import { RNSketchCanvas } from '@terrylinla/react-native-sketch-canvas';
-
 import Canvas from './Canvas';
+import Audio from './sub_component/audio'
+// Import the react-native-sound module
+import Sound from 'react-native-sound'
+
+// Enable playback in silence mode
+Sound.setCategory('Playback');
+
+const EXAMPLEAUDIO = "https://firebasestorage.googleapis.com/v0/b/learntigrinya-c5d56.appspot.com/o/Be.m4a?alt=media&token=6da6806b-4920-4e3e-af07-20e0297ccdb4"
+
 
 export default class Details extends React.Component {
+  constructor(props){
+    super(props)
+    this.audio = new Sound(EXAMPLEAUDIO, null, (error) => {
+        if (error) {
+          console.log('failed to load the sound', error);
+          return;
+        }
+        // download complete
+    });
 
-  // handleCanvas = async (canvas) => {
-  //   const ctx = await canvas.getContext('2d');
-  //   ctx.fillStyle = 'red';
-  //   ctx.fillRect(0, 0, 100, 100);
-  // }
+  }
 
   render(){
 
@@ -32,6 +45,7 @@ export default class Details extends React.Component {
         <Text style={styles.main}>Pronunciation: {letter.pronouce}</Text>
         <Button
           title="Audio"
+          onPress={() => Audio(this)}
           buttonStyle={{
             color: "aliceblue"
           }}
