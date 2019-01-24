@@ -18,7 +18,7 @@ const AppNavigator = createStackNavigator(
     Details: {screen: Details}
   },
   {
-      initialRouteName: "Quiz"
+      initialRouteName: "About"
   });
 
 export default createAppContainer(AppNavigator);
