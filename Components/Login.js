@@ -25,7 +25,6 @@ export default class Login extends React.Component {
 
   constructor(props) {
     super(props)
-
     this.state = ({
       email: '',
       password: ''
@@ -65,14 +64,16 @@ export default class Login extends React.Component {
     const navigate = this.navigateHome
     try {
       firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
+        console.log(user)
         navigate()
       })
     }
     catch (error) {
       console.log(error.toString())
+
     }
   }
-
+  
   async loginWithFacebook() {
     const {type,token} = await Expo.Facebook.logInWithReadPermissionsAsync('2074220252876215',
     { permissions:['public_profile']})
@@ -85,7 +86,7 @@ export default class Login extends React.Component {
           this.navigateHome()
           console.log(response)
           }).catch(error => {
-            console.log(error)
+            console.log(error);
       })
     }
   }
@@ -120,22 +121,23 @@ export default class Login extends React.Component {
               onChangeText={(password) => this.setState({ password })}
               backgroundColor='#eee'
             />
-
-          <Button style={{ marginTop: 0, position: 'absolute', bottom: 0 }}
-            title="Login"
-            onPress={() => this.loginUser(this.state.email, this.state.password)}
-          >
-          </Button>
-          <Button style={{ marginTop: 0, position: 'absolute', bottom: 0 }}
-            title="Sign Up"
-            onPress={() => this.signUpUser(this.state.email, this.state.password)}
-          >
-          </Button>
-          <Button style={{ marginBottom: 0, position: 'absolute', bottom: 10 }}
-            title="Login With Facebook"
-            onPress={() => this.loginWithFacebook()}
-          >
-          </Button>
+          <View style={styles.btn}>
+            <Button
+              title="Login"
+              onPress={() => this.loginUser(this.state.email, this.state.password)}
+            >
+            </Button>
+            <Button
+              title="Sign Up"
+              onPress={() => this.signUpUser(this.state.email, this.state.password)}
+            >
+            </Button>
+            <Button
+              title="Login With Facebook"
+              onPress={() => this.loginWithFacebook()}
+            >
+            </Button>
+          </View>
         </View>
       </View>
     );
@@ -176,6 +178,9 @@ const styles = StyleSheet.create({
   },
   input: {
     textAlign: 'center',
+
+  },
+  btn: {
 
   }
 
